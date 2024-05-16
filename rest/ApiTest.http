@@ -1,0 +1,24 @@
+
+GET http://localhost:8080/v1/notices
+
+
+###
+GET http://localhost:8080/v1/notices/1
+
+
+
+###
+POST http://localhost:8080/v1/notices
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="formInfo"
+
+{
+"title" : "Save Title",
+"content" : "Save Content",
+"startDate" : "2024.05.11 12:34:56",
+"endDate" : "2024-06-11 13:24:35"
+}
+
+
