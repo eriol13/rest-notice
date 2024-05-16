@@ -5,6 +5,12 @@
   * Spring Boot와 Spring Data JPA를 활용하여 간단하게 구현해본 공지사항 REST API 서버
 
 ### 주요 기능
+  #### 0. 공통 응답
+   - `405 Method Not Allowed` : 엔드포인트에서 허용되지 않은 메소드로 요청
+   - `500 Internal Server Error' : 서버에서 처리 중 예상치 못한 오류 발생
+   - `502 Bad Gateway` : 프록시 서버로부터 잘못된 응답 수신
+   - `503 Service Unavailable` : 서버가 요청을 처리할 수 없는 상태(서버 과부하, 임시적인 서비스 중지)
+   - `504 Gateway Timeout` : 서버가 요청을 처리하는 동안 다른 서버로부터 응답시간 초과 응답을 받음
 
   #### 1. 공지사항 목록 조회
     - 엔드포인트 : `GET /v1/notices`
@@ -25,6 +31,7 @@
     - 응답 :
       - `201 Created` : 성공적으로 공지사항 정보 저장 성공
       - `400 Bad Request` : 공지사항 정보 저장 중 오류가 발생
+      - `507 Insufficient Storage` : 서버 저장공간 부족 ( 요구사항에 파일 갯수 및 용량 제한 없음 )
      
   #### 4. 공지사항 수정
     - 엔드포인트 : `PUT /v1/notices/{id}`
@@ -33,6 +40,7 @@
       - `201 Created` : 성공적으로 공지사항 정보 저장 성공
       - `400 Bad Request` : 공지사항 정보 수정 중 오류가 발생
       - `404 Not Found` : 매개변수로 전달받은 ID로 조회되는 공지사항 정보가 존재하지 않음
+      - `507 Insufficient Storage` : 서버 저장공간 부족 ( 요구사항에 파일 갯수 및 용량 제한 없음 )
      
   #### 5. 공지사항 삭제
     - 엔드포인트 : `DELETE /v1/notices/{id}`
